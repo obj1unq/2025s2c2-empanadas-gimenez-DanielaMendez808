@@ -27,7 +27,7 @@ object galvan {
       deuda = deuda + (cantidad - dinero)
       dinero = 0}
   }
-    method cobrar(cantidad){
+    method cobrar(){
     if (self.deuda() > 0)  
       {self.pagarDeuda()}
     else {
@@ -54,9 +54,11 @@ object gimenez {
   method pagarSueldo(empleado){
     self.validarFondo(empleado)  
     fondo = fondo - empleado.sueldo()
+    empleado.cobrar()
   }
   method validarFondo(empleado){
-    if ( 0  > (self.fondo() - empleado.sueldo()))
+    if ( fondo < empleado.sueldo())
     {self.error ("No hay fondos para pagar a " + empleado)}
   }
 }
+

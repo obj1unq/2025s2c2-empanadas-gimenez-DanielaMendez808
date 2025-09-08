@@ -1,13 +1,12 @@
 import empleados.*
 describe "Test de validaciones"{
-    test"Gimenez tiene fondo de 15000 y puede pagar sueldo a galvan"{
+    test"Gimenez tiene fondos para pagar sueldo a galvan"{
         gimenez.fondo(15000)
-        gimenez.pagarSueldo(galvan)
-        assert.equals(0,gimenez.fondo())
+        assert.doesNotThrowException({gimenez.pagarSueldo(galvan)})
     }
-    test "Gimenez tiene 0 fondos y no puede pagar a Baigorria"{
+    test "Gimenez no puede pagar a Baigorria"{
         gimenez.fondo(0)
-        gimenez.pagarSueldo(baigorria)
-        assert.equals(0,gimenez.fondo())
+        baigorria.cantidadEmpanadasVendidas(50)
+        assert.throwsException({gimenez.pagarSueldo(baigorria)})
     }
-}
+}-
