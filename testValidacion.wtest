@@ -1,0 +1,12 @@
+import empleados.*
+describe "Test de validaciones"{
+    test"Gimenez tiene fondos para pagar sueldo a galvan"{
+        gimenez.fondo(15000)
+        assert.doesNotThrowException({gimenez.pagarSueldo(galvan)})
+    }
+    test "Gimenez no puede pagar a Baigorria"{
+        gimenez.fondo(0)
+        baigorria.cantidadEmpanadasVendidas(50)
+        assert.throwsException({gimenez.pagarSueldo(baigorria)})
+    }
+}-
